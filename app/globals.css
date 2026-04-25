@@ -1,0 +1,186 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── CSS Variables ─────────────────────────────────────────────────────────── */
+:root {
+  --gold: #d4af37;
+  --gold-light: #f0d060;
+  --emerald-dark: #064e3b;
+  --emerald-mid: #047857;
+  --ivory: #faf9f0;
+  --ivory-dark: #ede9d4;
+  --pattern-opacity: 0.04;
+}
+
+.dark {
+  --ivory: #1a1f2e;
+  --ivory-dark: #21262d;
+  --pattern-opacity: 0.06;
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-lato), sans-serif;
+}
+
+/* ─── Custom Scrollbar ──────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.4);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.7);
+}
+
+/* ─── Arabic Text Optimizations ─────────────────────────────────────────────── */
+.arabic-text {
+  font-family: var(--font-amiri), serif;
+  font-feature-settings: "liga" 1, "calt" 1;
+  line-height: 2.2;
+  letter-spacing: 0.02em;
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+.arabic-text-large {
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+/* ─── Islamic Geometric Pattern SVG background ──────────────────────────────── */
+.islamic-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='%23d4af37' fill-opacity='0.05'%3E%3Cpath d='M40 0 L80 40 L40 80 L0 40Z' stroke='%23d4af37' stroke-width='1' fill='none' stroke-opacity='0.1'/%3E%3Cpath d='M40 10 L70 40 L40 70 L10 40Z' stroke='%23d4af37' stroke-width='0.5' fill='none' stroke-opacity='0.08'/%3E%3Ccircle cx='40' cy='40' r='20' stroke='%23d4af37' stroke-width='0.5' fill='none' stroke-opacity='0.06'/%3E%3Cpath d='M40 20 L60 40 L40 60 L20 40Z' stroke='%23d4af37' stroke-width='0.5' fill='none' stroke-opacity='0.05'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* ─── Gold divider line ─────────────────────────────────────────────────────── */
+.gold-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+/* ─── Highlighted Ayah ──────────────────────────────────────────────────────── */
+.ayah-highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.12) 0%,
+    rgba(6, 78, 59, 0.08) 100%
+  );
+  border-left: 3px solid var(--gold);
+}
+
+.dark .ayah-highlight {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.15) 0%,
+    rgba(16, 185, 129, 0.08) 100%
+  );
+}
+
+/* ─── Glassmorphism Card ─────────────────────────────────────────────────────── */
+.glass-card {
+  background: rgba(250, 249, 240, 0.8);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.dark .glass-card {
+  background: rgba(22, 27, 34, 0.85);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+/* ─── Gold gradient text ─────────────────────────────────────────────────────── */
+.gold-text {
+  background: linear-gradient(135deg, #d4af37, #f0d060, #b8963e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Progress bar ──────────────────────────────────────────────────────────── */
+.progress-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(212, 175, 55, 0.25);
+  outline: none;
+  cursor: pointer;
+}
+
+.progress-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(212, 175, 55, 0.5);
+  transition: transform 0.15s;
+}
+
+.progress-bar::-webkit-slider-thumb:hover {
+  transform: scale(1.3);
+}
+
+/* ─── Volume bar ────────────────────────────────────────────────────────────── */
+.volume-bar {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 3px;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.volume-bar::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gold);
+  cursor: pointer;
+}
+
+/* ─── Loading skeleton animation ─────────────────────────────────────────────── */
+@keyframes skeleton-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(212, 175, 55, 0.08) 0%,
+    rgba(212, 175, 55, 0.18) 50%,
+    rgba(212, 175, 55, 0.08) 100%
+  );
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+/* ─── Transitions ────────────────────────────────────────────────────────────── */
+* {
+  transition-property: color, background-color, border-color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+/* ─── Font variable mappings (set since we're not using next/font) ─────────── */
+:root {
+  --font-amiri: 'Amiri', serif;
+  --font-cinzel: 'Cinzel', serif;
+  --font-lato: 'Lato', sans-serif;
+}
