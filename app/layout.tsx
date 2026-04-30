@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import TelegramProvider from "../components/telegram/TelegramProvider";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
   title: "Noor — The Holy Quran",
@@ -27,6 +28,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
         <TelegramProvider />
         {children}
+
+          <Footer />
       </body>
     </html>
   );
