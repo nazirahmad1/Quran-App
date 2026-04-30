@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import TelegramProvider from "../components/telegram/TelegramProvider";
 
 export const metadata: Metadata = {
   title: "Noor — The Holy Quran",
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             __html: `try{const s=JSON.parse(localStorage.getItem('quran-app-storage')||'{}');if(s.state?.darkMode)document.documentElement.classList.add('dark');}catch(e){}`,
           }}
         />
+        <TelegramProvider />
         {children}
       </body>
     </html>
